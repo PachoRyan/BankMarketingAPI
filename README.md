@@ -4,7 +4,7 @@
 > Mitsuo Murakami
 > Christian Frisancho
 > Gonzalo Rodriguez
-> Luis Huaregui
+> Luis Jáuregui
 
 Sistema de Machine Learning end-to-end sobre el **Bank Marketing Dataset (UCI)**:
 entrena un modelo, lo empaqueta en una API REST, lo containeriza y lo despliega
