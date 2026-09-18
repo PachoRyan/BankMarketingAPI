@@ -1,0 +1,200 @@
+{
+  "descripcion": "Ejemplos listos para pegar en Swagger UI (/docs) o en Postman.",
+  "validos": [
+    {
+      "caso": "1) Estudiante joven, ya contactado con ÉXITO en una campaña previa, contexto de tasas bajas -> perfil de ALTA probabilidad",
+      "payload": {
+        "age": 24,
+        "job": "student",
+        "marital": "single",
+        "education": "high.school",
+        "default": "no",
+        "housing": "no",
+        "loan": "no",
+        "contact": "cellular",
+        "month": "mar",
+        "day_of_week": "tue",
+        "campaign": 1,
+        "pdays": 6,
+        "previous": 2,
+        "poutcome": "success",
+        "emp.var.rate": -1.8,
+        "cons.price.idx": 92.843,
+        "cons.conf.idx": -50.0,
+        "euribor3m": 1.266,
+        "nr.employed": 5099.1
+      }
+    },
+    {
+      "caso": "2) Jubilado, contactado por celular en octubre, campaña previa exitosa",
+      "payload": {
+        "age": 68,
+        "job": "retired",
+        "marital": "married",
+        "education": "professional.course",
+        "default": "no",
+        "housing": "yes",
+        "loan": "no",
+        "contact": "cellular",
+        "month": "oct",
+        "day_of_week": "thu",
+        "campaign": 1,
+        "pdays": 3,
+        "previous": 1,
+        "poutcome": "success",
+        "emp.var.rate": -3.4,
+        "cons.price.idx": 92.431,
+        "cons.conf.idx": -26.9,
+        "euribor3m": 0.742,
+        "nr.employed": 5017.5
+      }
+    },
+    {
+      "caso": "3) Obrero contactado por teléfono fijo en mayo, sin historial -> perfil de BAJA probabilidad (caso más común del dataset)",
+      "payload": {
+        "age": 45,
+        "job": "blue-collar",
+        "marital": "married",
+        "education": "basic.9y",
+        "default": "unknown",
+        "housing": "yes",
+        "loan": "no",
+        "contact": "telephone",
+        "month": "may",
+        "day_of_week": "mon",
+        "campaign": 3,
+        "pdays": 999,
+        "previous": 0,
+        "poutcome": "nonexistent",
+        "emp.var.rate": 1.1,
+        "cons.price.idx": 93.994,
+        "cons.conf.idx": -36.4,
+        "euribor3m": 4.857,
+        "nr.employed": 5191.0
+      }
+    },
+    {
+      "caso": "4) Administrativa con estudios universitarios, primera campaña, contexto económico intermedio",
+      "payload": {
+        "age": 33,
+        "job": "admin.",
+        "marital": "single",
+        "education": "university.degree",
+        "default": "no",
+        "housing": "no",
+        "loan": "no",
+        "contact": "cellular",
+        "month": "aug",
+        "day_of_week": "wed",
+        "campaign": 2,
+        "pdays": 999,
+        "previous": 0,
+        "poutcome": "nonexistent",
+        "emp.var.rate": 1.4,
+        "cons.price.idx": 93.444,
+        "cons.conf.idx": -36.1,
+        "euribor3m": 4.964,
+        "nr.employed": 5228.1
+      }
+    },
+    {
+      "caso": "5) Cliente 'quemado': 17 llamadas en la misma campaña y un fracaso previo",
+      "payload": {
+        "age": 52,
+        "job": "technician",
+        "marital": "divorced",
+        "education": "basic.4y",
+        "default": "no",
+        "housing": "no",
+        "loan": "yes",
+        "contact": "telephone",
+        "month": "jul",
+        "day_of_week": "fri",
+        "campaign": 17,
+        "pdays": 999,
+        "previous": 1,
+        "poutcome": "failure",
+        "emp.var.rate": 1.4,
+        "cons.price.idx": 93.918,
+        "cons.conf.idx": -42.7,
+        "euribor3m": 4.963,
+        "nr.employed": 5228.1
+      }
+    },
+    {
+      "caso": "6) Valores 'unknown' en varias variables (caso realista de datos sucios)",
+      "payload": {
+        "age": 41,
+        "job": "unknown",
+        "marital": "unknown",
+        "education": "unknown",
+        "default": "unknown",
+        "housing": "unknown",
+        "loan": "unknown",
+        "contact": "cellular",
+        "month": "nov",
+        "day_of_week": "tue",
+        "campaign": 1,
+        "pdays": 999,
+        "previous": 0,
+        "poutcome": "nonexistent",
+        "emp.var.rate": -0.1,
+        "cons.price.idx": 93.2,
+        "cons.conf.idx": -42.0,
+        "euribor3m": 4.076,
+        "nr.employed": 5195.8
+      }
+    }
+  ],
+  "invalidos": [
+    {
+      "caso": "A) Categoría inexistente en `job`",
+      "payload": {
+        "age": 33,
+        "job": "astronauta",
+        "marital": "single",
+        "education": "university.degree",
+        "default": "no",
+        "housing": "no",
+        "loan": "no",
+        "contact": "cellular",
+        "month": "aug",
+        "day_of_week": "wed",
+        "campaign": 2,
+        "pdays": 999,
+        "previous": 0,
+        "poutcome": "nonexistent",
+        "emp.var.rate": 1.4,
+        "cons.price.idx": 93.444,
+        "cons.conf.idx": -36.1,
+        "euribor3m": 4.964,
+        "nr.employed": 5228.1
+      },
+      "esperado": "HTTP 422"
+    },
+    {
+      "caso": "B) Falta el campo obligatorio `age`",
+      "payload": {
+        "job": "admin.",
+        "marital": "single",
+        "education": "university.degree",
+        "default": "no",
+        "housing": "no",
+        "loan": "no",
+        "contact": "cellular",
+        "month": "aug",
+        "day_of_week": "wed",
+        "campaign": 2,
+        "pdays": 999,
+        "previous": 0,
+        "poutcome": "nonexistent",
+        "emp.var.rate": 1.4,
+        "cons.price.idx": 93.444,
+        "cons.conf.idx": -36.1,
+        "euribor3m": 4.964,
+        "nr.employed": 5228.1
+      },
+      "esperado": "HTTP 422"
+    }
+  ]
+}

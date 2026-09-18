@@ -1,0 +1,20 @@
+# ---------------------------------------------------------------------------
+# Dependencias de EJECUCIÓN (API + carga del modelo).
+# Son las que se instalan dentro del contenedor Docker / Cloud Run.
+#
+# IMPORTANTE: las versiones están fijadas a propósito. Un artefacto .joblib
+# creado con scikit-learn 1.8.0 debe cargarse con scikit-learn 1.8.0; si la
+# versión cambia, el modelo puede fallar o cambiar de comportamiento.
+# ---------------------------------------------------------------------------
+fastapi==0.141.1
+uvicorn[standard]==0.53.0
+pydantic==2.13.5
+
+scikit-learn==1.8.0
+numpy==2.4.4
+scipy==1.17.1
+pandas==3.0.2
+joblib==1.5.3
+
+# usado por client/test_client.py
+requests==2.33.1

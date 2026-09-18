@@ -1,0 +1,65 @@
+# ---------------------------------------------------------------------------
+# Pipeline de despliegue continuo: GitHub -> Cloud Build -> Artifact Registry
+#                                                        -> Cloud Run
+#
+# Cada push a la rama `main` dispara este archivo (ver docs/despliegue_gcp.md):
+#   1. construye la imagen Docker,
+#   2. la sube a Artifact Registry con dos tags: el SHA del commit y `latest`,
+#   3. despliega esa imagen exacta en Cloud Run.
+#
+# El tag con SHA permite volver a una versión anterior con un solo comando.
+# ---------------------------------------------------------------------------
+
+substitutions:
+  _REGION: us-central1
+  _REPO: bank-repo
+  _SERVICE: bank-marketing-api
+
+steps:
+  # 1) Build
+  - id: build
+    name: gcr.io/cloud-builders/docker
+    args:
+      - build
+      - -t
+      - ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_SERVICE}:$SHORT_SHA
+      - -t
+      - ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_SERVICE}:latest
+      - .
+
+  # 2) Push a Artifact Registry
+  - id: push
+    name: gcr.io/cloud-builders/docker
+    args:
+      - push
+      - --all-tags
+      - ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_SERVICE}
+
+  # 3) Deploy a Cloud Run
+  - id: deploy
+    name: gcr.io/google.com/cloudsdktool/cloud-sdk
+    entrypoint: gcloud
+    args:
+      - run
+      - deploy
+      - ${_SERVICE}
+      - --image=${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_SERVICE}:$SHORT_SHA
+      - --region=${_REGION}
+      - --platform=managed
+      - --allow-unauthenticated
+      - --port=8080
+      - --memory=1Gi
+      - --cpu=1
+      - --timeout=300
+      - --min-instances=0
+      - --max-instances=5
+
+images:
+  - ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_SERVICE}:$SHORT_SHA
+  - ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_SERVICE}:latest
+
+options:
+  logging: CLOUD_LOGGING_ONLY   # evita el error "build must specify a logs bucket"
+  machineType: E2_HIGHCPU_8
+
+timeout: 1200s

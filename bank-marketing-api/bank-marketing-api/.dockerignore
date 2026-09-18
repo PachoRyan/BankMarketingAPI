@@ -1,0 +1,17 @@
+# Todo lo que no debe entrar a la imagen (imagen más pequeña y build más rápido)
+.git
+.gitignore
+.venv
+utec_taller/
+__pycache__/
+*.pyc
+data/
+notebooks/
+reports/
+docs/
+src/
+client/
+*.ipynb
+*.md
+!README.md
+.DS_Store

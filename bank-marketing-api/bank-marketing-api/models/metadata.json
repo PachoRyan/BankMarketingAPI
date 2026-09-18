@@ -1,0 +1,64 @@
+{
+  "model_version": "1.0.0",
+  "model_name": "random_forest",
+  "best_params": {
+    "max_depth": 10,
+    "min_samples_leaf": 5
+  },
+  "raw_features": [
+    "age",
+    "campaign",
+    "pdays",
+    "previous",
+    "emp.var.rate",
+    "cons.price.idx",
+    "cons.conf.idx",
+    "euribor3m",
+    "nr.employed",
+    "job",
+    "marital",
+    "education",
+    "default",
+    "housing",
+    "loan",
+    "contact",
+    "month",
+    "day_of_week",
+    "poutcome"
+  ],
+  "model_features": [
+    "age",
+    "campaign",
+    "previous",
+    "emp.var.rate",
+    "cons.price.idx",
+    "cons.conf.idx",
+    "euribor3m",
+    "nr.employed",
+    "pdays_clean",
+    "was_contacted_before",
+    "job",
+    "marital",
+    "education",
+    "default",
+    "housing",
+    "loan",
+    "contact",
+    "month",
+    "day_of_week",
+    "poutcome"
+  ],
+  "excluded_features": [
+    "duration"
+  ],
+  "target_map": {
+    "no": 0,
+    "yes": 1
+  },
+  "n_rows_final_fit": 41176,
+  "decision_threshold": 0.63,
+  "trained_at": "2026-09-18T03:18:20+00:00",
+  "sklearn_version": "1.8.0",
+  "python_version": "3.12.3",
+  "dataset": "Bank Marketing (UCI) - bank-additional-full.csv"
+}

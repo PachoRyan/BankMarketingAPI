@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.venv/
+utec_taller/
+venv/
+.env
+.DS_Store
+.ipynb_checkpoints/
+# El CSV de UCI no se versiona: se descarga con src/download_data.py
+data/*.csv
+# El modelo SÍ se versiona: Cloud Run lo necesita dentro de la imagen.
+!models/model.joblib
