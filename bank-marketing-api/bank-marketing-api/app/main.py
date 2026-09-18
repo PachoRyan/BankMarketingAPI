@@ -49,11 +49,17 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(
-    title="Bank Marketing API - Predicción de depósito a plazo",
+    title="Bank Marketing API - Predicción de depósito a plazo - Grupo Mitsuo :D",
     description=(
         "API de predicción entrenada con el Bank Marketing Dataset (UCI).\n\n"
         "**La variable `duration` no se usa**: solo se conoce después de la llamada "
         "y utilizarla sería data leakage. Si se envía en el JSON, se ignora."
+
+        "> Oscar Ryan Chu Lao Orrego"
+        "> Mitsuo Murakami"
+        "> Christian Frisancho"
+        "> Gonzalo Rodriguez"
+        "> Luis Huaregui"
     ),
     version="1.0.0",
     lifespan=lifespan,

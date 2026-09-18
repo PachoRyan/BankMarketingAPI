@@ -1,4 +1,10 @@
-# Hackathon 6 — Bank Marketing API
+# Hackathon 6 — Grupo Mitsuo - Bank Marketing API
+
+> Oscar Ryan Chu Lao Orrego
+> Mitsuo Murakami
+> Christian Frisancho
+> Gonzalo Rodriguez
+> Luis Huaregui
 
 Sistema de Machine Learning end-to-end sobre el **Bank Marketing Dataset (UCI)**:
 entrena un modelo, lo empaqueta en una API REST, lo containeriza y lo despliega
@@ -8,8 +14,8 @@ en **Google Cloud Run**.
 > modelo final. Solo se conoce después de la llamada, así que usarla sería data
 > leakage. Si un request la incluye, la API la ignora y lo reporta en `warnings`.
 
-**URL pública del servicio:** `https://...run.app` ← *(pegar aquí tras el despliegue)*
-**Documentación interactiva:** `https://...run.app/docs`
+**URL pública del servicio:** `https://bank-marketing-api-85457322898.us-central1.run.app`
+**Documentación interactiva:** `https://bank-marketing-api-85457322898.us-central1.run.app/docs`
 
 ---
 
